@@ -6,7 +6,7 @@ from sqlalchemy import select
 
 from api import DBSessionDep
 from src.crud.user import add_user, get_user_by_email
-from src.models.auth import Token
+from src.pydantic.auth import Token
 from src.models.user import User
 from src.pydantic.user import UserCreate, UserPrivate, UserResponse
 from utils.auth import create_access_token, verify_password
@@ -39,6 +39,6 @@ async def register(new_user: UserCreate, db_session: DBSessionDep) -> UserPrivat
     user_bd = User(**new_user.model_dump())
     add_user(db_session, user_bd)
     await db_session.commit()
-
+    
     return user_bd
     

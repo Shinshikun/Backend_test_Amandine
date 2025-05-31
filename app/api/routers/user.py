@@ -1,6 +1,6 @@
 from api.auth.auth import validate_is_authenticated
 from api import DBSessionDep
-from src.crud.user import get_user
+from src.crud.user import get_all_users, get_user
 from src.pydantic.user import UserResponse, UserUpdate
 from fastapi import APIRouter, Depends, status
 
@@ -9,6 +9,19 @@ router = APIRouter(
     tags=["users"],
     responses={404: {"description": "Not found"}},
 )
+
+
+@router.get(
+    "/",
+    dependencies=[Depends(validate_is_authenticated)],
+    status_code=status.HTTP_200_OK
+)
+async def users_details(
+    db_session: DBSessionDep,
+) -> list[UserResponse]:
+    users = await get_all_users(db_session)
+    return users
+
 
 @router.get(
     "/{user_id}",
@@ -20,7 +33,7 @@ async def user_details(
     db_session: DBSessionDep,
 ) -> UserResponse:
     user = await get_user(db_session, user_id)
-    return UserResponse.model_validate(user)
+    return user
 
 
 @router.post(
@@ -33,21 +46,16 @@ async def create_user(
 ):
     pass
 
-@router.patch(
-    "/{user_id}",
-    dependencies=[Depends(validate_is_authenticated)],
-    status_code=status.HTTP_200_OK
-)
+@router.patch("/{user_id}", dependencies=[Depends(validate_is_authenticated)])
 async def update_user(
-    user_id: str,
+    user_id: int,
     user_update: UserUpdate,
     db_session: DBSessionDep
 ) -> UserResponse:
-    data_user = user_update.model_dump(exclude_unset=True)
     user = await get_user(db_session, user_id)
+    data_user = user_update.model_dump(exclude_unset=True)
     for key, value in data_user.items():
         setattr(user, key, value)
 
-    db_session.commit()
-
-    return UserResponse.model_validate(user)
+    await db_session.commit()
+    return user
