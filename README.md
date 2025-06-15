@@ -15,8 +15,6 @@ Ce dépôt contient le **backend d’un projet de test** développé avec **Fast
 git clone https://github.com/ton-utilisateur/ton-projet-fastapi.git
 cd ton-projet-fastapi
 
-git clone https://github.com/ton-utilisateur/ton-projet-fastapi.git
-cd ton-projet-fastapi
 python -m venv venv
 source venv/bin/activate  # Sur Windows: venv\Scripts\activate
 pip install -r requirements.txt
