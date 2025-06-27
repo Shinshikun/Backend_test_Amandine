@@ -5,7 +5,7 @@ from api import DBSessionDep
 from api.auth.user import CurrentUserDep
 from src.pydantic.label import LabelBase
 from src.models.task import Label, Task
-from src.pydantic.task import TaskCreate, TaskResponse
+from src.pydantic.task import TaskCreate, TaskResponse, TaskUpdate
 from src.crud.task import add_labels_to_task, add_task, delete_task, get_all_tasks, get_task, remove_label_from_task
 from fastapi import APIRouter, Body, Depends, HTTPException, status, Query
 from datetime import datetime, timedelta
@@ -175,4 +175,19 @@ async def add_label_to_task(
         await db_session.commit()
         await db_session.refresh(task)
 
+    return task
+
+
+@router.patch("/{task_id}", dependencies=[Depends(validate_is_authenticated)])
+async def update_task(
+    task_id: int,
+    task_update: TaskUpdate,
+    db_session: DBSessionDep
+) -> TaskResponse:
+    task = await get_task(db_session, task_id)
+    data_task = task_update.model_dump(exclude_unset=True)
+    for key, value in data_task.items():
+        setattr(task, key, value)
+
+    await db_session.commit()
     return task

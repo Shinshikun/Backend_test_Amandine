@@ -31,5 +31,6 @@ class Task(Base):
     labels: Mapped[list[Label]] = relationship(secondary=association_task_label, lazy="selectin")
     date: Mapped[datetime] = mapped_column(default=datetime.now())
     title: Mapped[str] = mapped_column(nullable=True, default="")
+    etat : Mapped[str] = mapped_column(nullable=False, default="CREATED")
 
 
