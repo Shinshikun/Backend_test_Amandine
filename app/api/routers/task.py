@@ -83,7 +83,7 @@ async def create_task(
     db_session: DBSessionDep,
     user: CurrentUserDep
 ) -> TaskResponse:
-    task_bd = Task(description=new_task.description)
+    task_bd = Task(description=new_task.description, title=new_task.title)
     task_bd.user = user
     labels_db: list[Label] = []
 
