@@ -1,5 +1,8 @@
 from datetime import datetime
 from sqlalchemy import Column, ForeignKey, Label, Table
+from sqlalchemy import Enum as SqlEnum
+
+from src.pydantic.task import TaskState
 from . import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -29,8 +32,8 @@ class Task(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True, autoincrement=True, nullable=False)
     description: Mapped[str] = mapped_column(nullable=True, default="")
     labels: Mapped[list[Label]] = relationship(secondary=association_task_label, lazy="selectin")
-    date: Mapped[datetime] = mapped_column(default=datetime.now())
+    date: Mapped[datetime] = mapped_column(default=datetime.now)
     title: Mapped[str] = mapped_column(nullable=True, default="")
-    etat : Mapped[str] = mapped_column(nullable=False, default="CREATED")
+    etat : Mapped[TaskState] = mapped_column(SqlEnum(TaskState), nullable=False, default=TaskState.CREATED)
 
 
