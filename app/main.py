@@ -8,4 +8,4 @@ from app.api.load_app import app
 if __name__ == "__main__":
     # Utiliser une chaîne de caractères est une pratique courante et permet d'activer
     # le rechargement automatique (`reload=True`), ce qui est très pratique en développement.
-    uvicorn.run("api.load_app:app", host="127.0.0.1", port=5000, reload=True)
+    uvicorn.run(app, host="127.0.0.1", port=5000, reload=True)
