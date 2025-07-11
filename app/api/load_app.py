@@ -28,7 +28,7 @@ origins = [
     "http://localhost:8080",     # Si vous utilisez le port par défaut de `vue-cli-service serve`
     "http://localhost:5173",     # Si vous utilisez le port par défaut de Vite (`npm run dev`)
     "http://127.0.0.1:5173",   # Parfois nécessaire aussi
-    # Ajoutez d'autres origines si nécessaire (par exemple, votre frontend déployé)
+    "https://amandineguisy.github.io",
 ]
 
 app.add_middleware(
