@@ -1,4 +1,4 @@
-from src.models.task import Task, Label
+from app.src.models.task import Task, Label
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload

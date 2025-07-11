@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy import Column, ForeignKey, Label, Table
 from sqlalchemy import Enum as SqlEnum
 
-from src.pydantic.task import TaskState
+from app.src.pydantic.task import TaskState
 from . import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 

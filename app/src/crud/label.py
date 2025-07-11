@@ -1,4 +1,4 @@
-from src.models.task import Label
+from app.src.models.task import Label
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession

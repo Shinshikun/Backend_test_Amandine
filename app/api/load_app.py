@@ -2,12 +2,12 @@ from contextlib import asynccontextmanager
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware # Importation ajoutée
 
-from api import sessionmanager
-from api.routers.user import router as user_router
-from api.routers.auth import router as auth_router
-from api.routers.task import router as task_router
-from api.routers.label import router as label_router
-from src.models import Base
+from app.api import sessionmanager
+from app.api.routers.user import router as user_router
+from app.api.routers.auth import router as auth_router
+from app.api.routers.task import router as task_router
+from app.api.routers.label import router as label_router
+from app.src.models import Base
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

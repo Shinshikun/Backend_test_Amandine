@@ -1,5 +1,5 @@
-from src.models.task import Task
-from src.models.user import User
+from app.src.models.task import Task
+from app.src.models.user import User
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload

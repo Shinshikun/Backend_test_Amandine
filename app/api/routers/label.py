@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, status
-from api.auth.auth import validate_is_authenticated
-from api import DBSessionDep
-from src.pydantic.label import LabelBase, LabelCreate, LabelResponse, LabelUpdate
-from src.models.task import Label
-from src.crud.label import get_all_labels, get_label, add_label, delete_label
+from app.api.auth.auth import validate_is_authenticated
+from app.api import DBSessionDep
+from app.src.pydantic.label import LabelBase, LabelCreate, LabelResponse, LabelUpdate
+from app.src.models.task import Label
+from app.src.crud.label import get_all_labels, get_label, add_label, delete_label
 
 router = APIRouter(
     prefix="/api/labels",

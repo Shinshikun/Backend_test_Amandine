@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator
-from src.pydantic.task import TaskBase
+from app.src.pydantic.task import TaskBase
 
 
 class UserBase(BaseModel):
@@ -20,7 +20,7 @@ class UserCreate(BaseModel):
 
     @field_validator('password')
     def hash_user_password(cls, password):
-        from utils.auth import hash_password
+        from app.utils.auth import hash_password
         return hash_password(password)
 
 class UserPrivate(UserBase):

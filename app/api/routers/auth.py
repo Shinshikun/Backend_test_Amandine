@@ -4,12 +4,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
 
-from api import DBSessionDep
-from src.crud.user import add_user, get_user_by_email
-from src.pydantic.auth import Token
-from src.models.user import User
-from src.pydantic.user import UserCreate, UserPrivate, UserResponse
-from utils.auth import create_access_token, verify_password
+from app.api import DBSessionDep
+from app.src.crud.user import add_user, get_user_by_email
+from app.src.pydantic.auth import Token
+from app.src.models.user import User
+from app.src.pydantic.user import UserCreate, UserPrivate, UserResponse
+from app.utils.auth import create_access_token, verify_password
 
 router = APIRouter(
     prefix="/api/auth",

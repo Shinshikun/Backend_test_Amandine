@@ -5,7 +5,7 @@ from typing import Optional, Literal
 from pydantic import BaseModel, ConfigDict, model_serializer
 
 # Import réel (pas seulement pour TYPE_CHECKING)
-from src.pydantic.label import LabelBase
+from app.src.pydantic.label import LabelBase
 
 class TaskState(Enum):
     CREATED = "CREATED"

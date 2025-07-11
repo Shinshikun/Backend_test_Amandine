@@ -1,5 +1,5 @@
 import uvicorn
-from api.load_app import app
+from app.api.load_app import app
 
 # Ce fichier est le point d'entrée pour le développement local uniquement.
 # Le serveur de production (UWSGI sur Alwaysdata) importe directement l'objet `app`

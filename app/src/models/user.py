@@ -1,4 +1,4 @@
-from src.models.task import Task
+from app.src.models.task import Task
 from . import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 

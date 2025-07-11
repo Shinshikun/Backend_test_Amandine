@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 import jwt
 import bcrypt
 from fastapi.security import OAuth2PasswordBearer
-from src.models.user import User
+from app.src.models.user import User
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token", auto_error=False)

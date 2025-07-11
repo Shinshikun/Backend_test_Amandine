@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import (
 )
 from sqlalchemy.orm import declarative_base
 
-from src.models import *
+from app.src.models import *
 
 Base = declarative_base()
 

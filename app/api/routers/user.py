@@ -1,7 +1,7 @@
-from api.auth.auth import validate_is_authenticated
-from api import DBSessionDep
-from src.crud.user import get_all_users, get_user
-from src.pydantic.user import UserResponse, UserUpdate
+from app.api.auth.auth import validate_is_authenticated
+from app.api import DBSessionDep
+from app.src.crud.user import get_all_users, get_user
+from app.src.pydantic.user import UserResponse, UserUpdate
 from fastapi import APIRouter, Depends, status
 
 router = APIRouter(

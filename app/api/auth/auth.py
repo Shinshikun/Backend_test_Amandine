@@ -1,5 +1,5 @@
 from .user import CurrentUserDep
-from src.models.user import User
+from app.src.models.user import User
 
 
 async def validate_is_authenticated(

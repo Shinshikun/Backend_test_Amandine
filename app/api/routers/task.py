@@ -1,12 +1,12 @@
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
-from api.auth.auth import validate_is_authenticated
-from api import DBSessionDep
-from api.auth.user import CurrentUserDep
-from src.pydantic.label import LabelBase
-from src.models.task import Label, Task
-from src.pydantic.task import TaskCreate, TaskResponse, TaskUpdate
-from src.crud.task import add_labels_to_task, add_task, delete_task, get_all_tasks, get_task, remove_label_from_task
+from app.api.auth.auth import validate_is_authenticated
+from app.api import DBSessionDep
+from app.api.auth.user import CurrentUserDep
+from app.src.pydantic.label import LabelBase
+from app.src.models.task import Label, Task
+from app.src.pydantic.task import TaskCreate, TaskResponse, TaskUpdate
+from app.src.crud.task import add_labels_to_task, add_task, delete_task, get_all_tasks, get_task, remove_label_from_task
 from fastapi import APIRouter, Body, Depends, HTTPException, status, Query
 from datetime import datetime, timedelta
 

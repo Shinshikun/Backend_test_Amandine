@@ -1,10 +1,10 @@
 from typing import Annotated
 
-from src.models.user import User
-from api import DBSessionDep
-from src.crud.user import get_user_by_email
-from src.pydantic.auth import TokenData
-from utils.auth import decode_jwt, oauth2_scheme
+from app.src.models.user import User
+from app.api import DBSessionDep
+from app.src.crud.user import get_user_by_email
+from app.src.pydantic.auth import TokenData
+from app.utils.auth import decode_jwt, oauth2_scheme
 from fastapi import Depends, HTTPException, status
 from jwt import PyJWTError
 
